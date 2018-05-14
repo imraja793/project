@@ -1,0 +1,43 @@
+{% extends "basic_app/base.html" %}
+{% load staticfiles %}
+
+{% block body_block %}
+  <div class="container">
+    <div class="jumbotron">
+        <table>
+            <tr>
+                <td>Expense Title</td>
+                <td>Amount</td>
+                <td>Currency</td>
+                <td>Payment Type</td>
+                <td>Expense Type</td>
+                <td>Vendor Name</td>
+                <td>Last 4 Digits</td>
+                <td>Invoice</td>
+                <td>User Id</td>
+
+                <td>Edit</td>
+            </tr>
+            {% for expense in expenses %}
+            <tr>
+                <td>{{ expense.expense_title }}</td>
+                <td>{{ expense.amount }}</td>
+                <td>{{ expense.currency }}</td>
+                <td>{{ expense.payment_type }}</td>
+                <td>{{ expense.expense_type }}</td>
+                <td>{{ expense.vendor_name }}</td>
+                <td>{{ expense.last4digit }}</td>
+                <td>{{ expense.invoice }}</td>
+                <td>{{ expense.userid }}</td>
+                    <td><a href={% url 'expense:get_expense' pk=expense.id %}><button type="submit">Edit</button></a></td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6">No expenses</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+  </div>
+{% endblock %}
+
