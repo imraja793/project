@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 from django.contrib import auth
 from django.db import models
 
+from django.core.validators import MaxValueValidator, RegexValidator
 
 
 class Payments(models.Model):
@@ -25,7 +26,7 @@ class AddExpense(models.Model):
     amount = models.DecimalField('Amount', decimal_places=2, max_digits=10)
     currency = models.CharField('Currency', max_length=23)
     vendor_name = models.CharField('Vendor Name', max_length=200, blank=True)
-    last4digit = models.IntegerField()
+    last4digit = models.CharField(max_length=4, validators=[RegexValidator(r'^\d{1,4}$')])
     invoice = models.IntegerField()
     userid = models.IntegerField()
     date = models.DateField()
