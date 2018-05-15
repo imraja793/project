@@ -1,3 +1,6 @@
+import user
+from datetime import timedelta, date
+
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 
@@ -41,5 +44,21 @@ def edit_expense(request, pk):
     if form.is_valid():
         form.save()
     return render(request, 'based/edit_expense.html', {'editing': True})
+
+@login_required
+def date_find(request):
+    samples = AddExpense.objects.filter(date__year='2018',
+                          date__month='5')
+
+    return render(request, 'based/date_change.html', {'samples': samples})
+
+
+
+@login_required
+def date_find_2(request):
+    samples = AddExpense.objects.filter(date__range=["2018-05-14", "2018-06-27"])
+
+    return render(request, 'based/date_find_2.html', {'samples': samples})
+
 
 

@@ -1,14 +1,40 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Base</title>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<html lang="en">
+<head>
+       <title>Title</title>
+    <meta charset="UTF-8">
 
-  </head>
-  <body>
-    <nav class="navbar navbar-default navbar-static-top">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<style>
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 6px;
+}
+
+th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 1px;
+    background-color: #6a5aef;
+
+}
+tr:nth-child(even) {
+    background-color: #dddddd;
+
+}
+</style>
+</head>
+<body>
+ <nav class="navbar navbar-default navbar-static-top">
       <div class="container">
         <ul class="nav navbar-nav">
 
@@ -22,20 +48,19 @@
             <li><a href="{% url 'logout' %}">Logout</a></li>
             <li><a href="{% url 'add_expense:view_expense' %}">View Expenses</a></li>
             <li><a href="{% url 'build:password' %}">Change Password</a></li>
-            <li><a href="{% url 'add_expense:add_expense' %}">Add <E></E>Expense</a></li>
+            <li><a href="{% url 'add_expense:add_expense' %}">Add Expense<E></E>Expense</a></li>
 
           {% else %}
             <li><a class="navbar-link" href="{% url 'build:user_login' %}">Login</a></li>
           {% endif %}
-          
+
         </ul>
       </div>
     </nav>
     <div class="container">
-    {% block body_block %}
-    {% endblock %}
-    </div>
+{% block body_block %}
 
+{% endblock %}
 
-  </body>
+</body>
 </html>

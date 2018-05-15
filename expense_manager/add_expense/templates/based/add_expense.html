@@ -1,16 +1,19 @@
 {% extends "basic_app/base.html" %}
-{% load staticfiles %}
+
 
 {% block body_block %}
+
   <div class="container">
     <div class="jumbotron">
-      {% if expense_added %}
-        <h1>Expense Added</h1>
+      {% if expense_added %}<hr>
+        <h1>Expense Added</h1><hr>
       {% else %}
         <h1>Add the expense</h1>
-        <form method="POST">
-          {% csrf_token %}
-          {{ add_expense_form.as_ul }}
+      <hr>
+
+        <form method="POST"><hr>
+          {% csrf_token %}<hr>
+          <ul>{{ add_expense_form.as_ul }}</ul><hr>
           <input type="submit" value="Add Expense">
         </form>
       {% endif %}

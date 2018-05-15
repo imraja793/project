@@ -8,5 +8,3 @@ class UserProfileInfo(models.Model):
 
     mobile_no = models.IntegerField()
 
-    def __str__(self):
-        return self.user.username.IntegerField(blank=True)

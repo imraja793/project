@@ -1,0 +1,31 @@
+{% extends "based/based.html" %}
+{% load staticfiles %}
+
+{% block body_block %}
+  <div class="container">
+    <div class="jumbotron">
+        <table>
+
+            {% for expense in samples %}
+            <th>
+                <th><td>{{ expense.expense_title }}</td></th>
+                <th><td>{{ expense.amount }}</td></th>
+                <th><td>{{ expense.currency }}</td></th>
+                <th><td>{{ expense.payment_type }}</td></th>
+                <th><td>{{ expense.expense_type }}</td></th>
+                <th><td>{{ expense.vendor_name }}</td></th>
+                <th><td>{{ expense.last4digit }}</td></th>
+                <th><td>{{ expense.invoice }}</td></th>
+                <th><td>{{ expense.userid }}</td></th>
+                    <td><a href={% url 'expense:get_expense' pk=expense.id %}><button type="submit">Edit</button></a></td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6">No expenses</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+  </div>
+{% endblock %}
+

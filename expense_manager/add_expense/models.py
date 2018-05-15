@@ -1,7 +1,23 @@
 from __future__ import unicode_literals
 
-
+from django.contrib import auth
 from django.db import models
+
+
+
+class Payments(models.Model):
+
+        paymen = models.CharField(max_length=30, blank=True, null=True)
+
+        def __str__(self):
+            return self.paymen
+
+class Expenses(models.Model):
+
+        expen = models.CharField(max_length=30, blank=True, null=True)
+
+        def __str__(self):
+            return self.expen
 
 
 class AddExpense(models.Model):
@@ -12,7 +28,12 @@ class AddExpense(models.Model):
     last4digit = models.IntegerField()
     invoice = models.IntegerField()
     userid = models.IntegerField()
+    date = models.DateField()
+    payment_type = models.ForeignKey(Payments)
+    expense_type = models.ForeignKey(Expenses)
 
-#
-#     payment_type = models.ForeignKey(Payment5)
-#     expense_type = models.ForeignKey(Expense3)
+
+
+
+
+
